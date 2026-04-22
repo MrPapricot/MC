@@ -1,18 +1,42 @@
 #include <stm32f10x.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 
 uint32_t start_delay_ms = 3876;
 
-
+/*
 void Delay(uint32_t delay) {
 	for (uint32_t i = 0; i < delay; i++);
 }
+*/
 
 
+/*
 void Delay_ms(uint32_t delay_ms) {
 	uint32_t delay = delay_ms * 1400;
 	Delay(delay);
+}
+*/
+
+void Delay_1_ms(void) {
+	for (uint32_t i = 0; i < 1471; i++);
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+}	
+
+void Delay(uint32_t ms) {
+	for (uint32_t i = 0; i < ms; i++) {
+		Delay_1_ms();
+	}
 }
 
 
@@ -41,6 +65,6 @@ void SystemCoreClockConfigure (void) {
 int main(void) {
 	SystemCoreClockConfigure();
 	SystemCoreClockUpdate();
-	Delay_ms(start_delay_ms);
-	return 0;
+	Delay(start_delay_ms);
+	while(true);
 }

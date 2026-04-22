@@ -7,8 +7,10 @@ void SystemCoreClockConfigure (void) {
     while ((RCC->CR & RCC_CR_HSIRDY) == 0);
 
     RCC->CFGR &= ~RCC_CFGR_SW;
+		while ((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_HSI);
 	
 		RCC->CR &= ~RCC_CR_PLLON;
+		while ((RCC->CR & RCC_CR_PLLRDY) != 0);
 
     RCC->CFGR &= ~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL);
     RCC->CFGR |= (RCC_CFGR_PLLSRC_HSI_Div2 | RCC_CFGR_PLLMULL7);
@@ -27,5 +29,5 @@ void SystemCoreClockConfigure (void) {
 int main(void) {
 	SystemCoreClockConfigure();
 	SystemCoreClockUpdate();
-	return 0;
+	while(1);
 }

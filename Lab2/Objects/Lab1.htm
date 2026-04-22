@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\Lab1.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Lab1.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Wed Mar 25 16:47:10 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Wed Mar 25 20:14:37 2026
 <BR><P>
-<H3>Maximum Stack Usage =         40 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         36 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; Delay_ms &rArr; Delay
+__rt_entry_main &rArr; main &rArr; Delay &rArr; Delay_1_ms
 <P>
 <H3>
 Functions with no stack information
@@ -208,8 +208,8 @@ Global Symbols
 <P><STRONG><a name="[71]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[3f]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; Delay_ms &rArr; Delay
+<BR><BR>[Stack]<UL><LI>Max Depth = 36 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; Delay &rArr; Delay_1_ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -477,18 +477,18 @@ Global Symbols
 
 <P><STRONG><a name="[7b]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[4a]"></a>Delay</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, main.o(.text.Delay))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Delay
+<P><STRONG><a name="[49]"></a>Delay</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, main.o(.text.Delay))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Delay &rArr; Delay_1_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
-</UL>
-
-<P><STRONG><a name="[49]"></a>Delay_ms</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, main.o(.text.Delay_ms))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Delay_ms &rArr; Delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
+<BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_1_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[4a]"></a>Delay_1_ms</STRONG> (Thumb, 54 bytes, Stack size 4 bytes, main.o(.text.Delay_1_ms))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Delay_1_ms
+</UL>
+<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
 </UL>
 
 <P><STRONG><a name="[4d]"></a>SystemCoreClockConfigure</STRONG> (Thumb, 176 bytes, Stack size 4 bytes, main.o(.text.SystemCoreClockConfigure))
@@ -510,12 +510,12 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
-<P><STRONG><a name="[40]"></a>main</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = main &rArr; Delay_ms &rArr; Delay
+<P><STRONG><a name="[40]"></a>main</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, main.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = main &rArr; Delay &rArr; Delay_1_ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemCoreClockUpdate
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemCoreClockConfigure
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>

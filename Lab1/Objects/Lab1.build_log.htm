@@ -22,16 +22,20 @@ Dialog DLL:      TCM.DLL V1.56.6.0
  
 <h2>Project:</h2>
 C:\Users\child\Documents\Keil\MC\Lab1\Lab1.uvprojx
-Project File Date:  03/10/2026
+Project File Date:  03/25/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.24', folder: 'C:\Users\child\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target_1'
+main.c(13): warning: while loop has empty body [-Wempty-body]
+   13 |                 while ((RCC->CR & RCC_CR_PLLRDY) != 0);
+      |                                                       ^
+main.c(13): note: put the semicolon on a separate line to silence this warning
+1 warning generated.
 compiling main.c...
-assembling startup_stm32f10x_md.s...
 linking...
-Program Size: Code=1284 RO-data=284 RW-data=4 ZI-data=1636  
-".\Objects\Lab1.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=1340 RO-data=284 RW-data=4 ZI-data=1636  
+".\Objects\Lab1.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -58,11 +62,11 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE@6.1.1
 
    * Component: Keil::Device:Startup@1.0.0
-      Source file:   Device/Source/system_stm32f10x.c
-      Include file:  RTE_Driver/Config/RTE_Device.h
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
-Build Time Elapsed:  00:00:00
+      Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/system_stm32f10x.c
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
